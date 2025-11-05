@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Página de Inicio de Sesión</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+    }
+    .login-container {
+      background: #fff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      text-align: center;
+      width: 350px;
+    }
+    .login-container h1 {
+      margin-bottom: 20px;
+      font-weight: 600;
+      color: #333;
+    }
+    .login-container form {
+      display: flex;
+      flex-direction: column;
+    }
+    .login-container input {
+      margin-top: 10px;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      outline: none;
+      transition: 0.3s;
+    }
+    .login-container input:focus {
+      border-color: #764ba2;
+      box-shadow: 0 0 5px rgba(118, 75, 162, 0.5);
+    }
+    .login-container input.error {
+      border-color: #e74c3c;
+      box-shadow: 0 0 5px rgba(231, 76, 60, 0.5);
+    }
+    .login-container button {
+      margin-top: 20px;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .login-container button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(135deg, #5a67d8, #6b46c1);
+    }
+    /* Estilo para el enlace de registro, igual al de la otra página */
+    .signup-link {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #555;
+    }
+    .signup-link a {
+      color: #764ba2;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .signup-link a:hover {
+      text-decoration: underline;
+    }
+    .error-message {
+      color: #e74c3c;
+      font-size: 12px;
+      text-align: left;
+      margin-top: 5px;
+      height: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Iniciar Sesión</h1>
+    <form id="login-form" novalidate>
+      <input type="text" id="email" placeholder="Correo electrónico o teléfono">
+      <div id="email-error" class="error-message"></div>
+
+      <input type="password" id="password" placeholder="Contraseña">
+      <div id="password-error" class="error-message"></div>
+      
+      <button type="submit">Ingresar</button>
+    </form>
+    
+    <p class="signup-link">¿No tienes una cuenta? 
+      <a href="registro.html">Crea una nueva</a>
+    </p>
+
+  </div>
+
+  <script>
+    const form = document.getElementById('login-form');
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    
+    const emailError = document.getElementById('email-error');
+    const passwordError = document.getElementById('password-error');
+
+    form.addEventListener('submit', function(event) {
+      event.preventDefault();
+      let isValid = true;
+      
+      email.classList.remove('error');
+      password.classList.remove('error');
+      emailError.textContent = '';
+      passwordError.textContent = '';
+
+      if (email.value.trim() === '') {
+        email.classList.add('error');
+        emailError.textContent = 'Este campo es obligatorio.';
+        isValid = false;
+      }
+      
+      if (password.value.trim() === '') {
+        password.classList.add('error');
+        passwordError.textContent = 'La contraseña es obligatoria.';
+        isValid = false;
+      }
+
+      if (isValid) {
+        window.location.href = 'home.html';
+      }
+    });
+  </script>
+</body>
+</html>
