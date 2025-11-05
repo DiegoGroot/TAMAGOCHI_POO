@@ -1,0 +1,120 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom, #f4e4b2, #e2b26e);
+  color: #2b1d0e;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  text-align: center;
+  background: #7b4b1f;
+  color: white;
+  padding: 15px;
+  font-size: 1.5rem;
+  border-bottom: 4px solid #4d2d0f;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+/* Tarjetas */
+.card {
+  background: #f8e6c2;
+  border: 3px solid #7b4b1f;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0,0,0,0.3);
+}
+
+.thumb {
+  height: 120px;
+  overflow: hidden;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.info {
+  text-align: center;
+  padding: 10px;
+  background: linear-gradient(to top, #c49356, #e0b878);
+  color: #2b1d0e;
+  font-weight: bold;
+  font-size: 0.95rem;
+}
+
+footer {
+  text-align: center;
+  background: #7b4b1f;
+  color: white;
+  padding: 10px;
+  font-size: 1rem;
+  border-top: 4px solid #4d2d0f;
+}
+
+/* 🔒 Bloqueados */
+.card.locked {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.lock-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+  color: rgba(0,0,0,0.7);
+  pointer-events: none;
+}
+
+/* 🎵 Música */
+#music-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(15, 23, 42, 0.8);
+  border: 2px solid #5bc0be;
+  border-radius: 50%;
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(91, 192, 190, 0.6);
+  transition: all 0.3s ease;
+}
+
+#music-control:hover {
+  transform: scale(1.1);
+}
+
+#music-btn {
+  background: none;
+  border: none;
+  color: #5bc0be;
+  font-size: 24px;
+  cursor: pointer;
+  outline: none;
+}
+
+#music-btn:hover {
+  color: #3aafa9;
+}
