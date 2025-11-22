@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Simon Dice</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/diseno_simon.css') }}">
+</head>
+<body>
+  <header>
+    <h1>🎵 Simon Dice</h1>
+    <div class="menu-buttons">
+      <button id="startBtn">Iniciar</button>
+      <button id="resetBtn">Reiniciar</button>
+      <button id="aiBtn">IA</button>
+      <button onclick="volver()">Volver</button>
+    </div>
+  </header>
+
+  <main>
+    <div id="game-board">
+      <div class="btn green" id="green"></div>
+      <div class="btn red" id="red"></div>
+      <div class="btn yellow" id="yellow"></div>
+      <div class="btn blue" id="blue"></div>
+    </div>
+
+    <div class="info">
+      <p>Nivel: <span id="level">1</span></p>
+      <p>Estado: <span id="status">Esperando...</span></p>
+      <p>Modo: <span id="mode">Jugador</span></p>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='js/simon.js') }}"></script>
+</body>
+</html>

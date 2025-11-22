@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Doodle Jump ⚡</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/Diseno_doodle.css') }}">
+</head>
+<body>
+
+  <h1>Doodle Jump ⚡</h1>
+  <canvas id="gameCanvas" width="400" height="600"></canvas>
+  <p id="scoreDisplay">Score: 0</p>
+
+  <div class="controls">
+    <!-- Volver al menú mediante form -->
+    <form action="{{ url_for('menu') }}" method="get" style="display:inline;">
+        <button type="submit">⬅ Menú Principal</button>
+    </form>
+
+    <!-- Reiniciar -->
+    <button id="restartBtn">🔄 Reiniciar Juego</button>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/doodlejump.js') }}"></script>
+  <script>
+    document.getElementById('restartBtn').addEventListener('click', () => {
+      window.location.reload(); // Reinicia el juego
+    });
+  </script>
+
+</body>
+</html>

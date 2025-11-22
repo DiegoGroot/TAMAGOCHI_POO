@@ -1,0 +1,68 @@
+{% extends "base_dashboard.html" %}
+
+{% block content %}
+<div class="game-container">
+
+    <aside class="status-panel">
+        <h2 id="pet-name">Sparky</h2>
+        
+        <div class="stats-container">
+            <div class="stat-bar">
+                <label for="hunger-bar">Hambre</label>
+                <progress id="hunger-bar" max="100" value="70"></progress>
+            </div>
+            <div class="stat-bar">
+                <label for="happiness-bar">Felicidad</label>
+                <progress id="happiness-bar" max="100" value="80"></progress>
+            </div>
+            <div class="stat-bar">
+                <label for="energy-bar">Energía</label>
+                <progress id="energy-bar" max="100" value="50"></progress>
+            </div>
+        </div>
+
+        <div class="action-buttons" id="action-buttons">
+            <button id="feed-btn">Alimentar</button>
+            <button id="play-btn">Jugar</button>
+            <button id="sleep-btn">Dormir</button>
+        </div>
+    </aside>
+
+    <main class="pet-world">
+        <div class="pet-world-header">
+            <h1 id="current-room-title">Sala de Estar</h1>
+            <button class="settings-toggle" id="settings-toggle-btn">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+        
+        <div class="pet-area" id="pet-area">
+            <div id="pet-sprite">
+                <i class="fa-solid fa-dog"></i>
+            </div>
+            <nav class="room-nav" id="room-nav">
+                <button class="room-btn active" data-room="sala" title="Sala">🏠</button>
+                <button class="room-btn" data-room="cocina" title="Cocina">🍳</button>
+                <button class="room-btn" data-room="dormitorio" title="Dormitorio">🛏️</button>
+                <button class="room-btn" data-room="bano" title="Baño">🛁</button>
+                <button class="room-btn" data-room="jardin" title="Jardín">🌳</button>
+                <button class="room-btn" data-room="tienda" title="Tienda">🛒</button>
+            </nav>
+        </div>
+    </main>
+</div>
+
+<div class="modal-overlay" id="settings-modal-overlay">
+    <div class="modal-box">
+        <span class="modal-close" id="settings-modal-close-btn">&times;</span>
+        <h1>Ajustes</h1>
+        <div class="settings-options">
+            <button class="settings-modal-btn" id="toggle-sound-btn">Sonidos: SÍ</button>
+            <button class="settings-modal-btn" id="toggle-music-btn">Música: SÍ</button>
+            <button class="settings-modal-btn">Controles</button>
+            <button class="settings-modal-btn">Ayuda</button>
+        </div>
+    </div>
+</div>
+<script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

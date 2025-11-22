@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pong con IA</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/Diseno_pong.css') }}">
+</head>
+<body>
+  <header class="header">
+    <h1 id="titulo">🏓 Pong con IA 🤖</h1>
+    <p id="subtitulo">Usa W/S (Jugador 1) y Flechas ↑/↓ (Jugador 2)</p>
+  </header>
+
+  <main>
+    <canvas id="pongCanvas" width="800" height="450"></canvas>
+    <div id="hud">
+      <span>Jugador 1: <span id="score1">0</span></span> |
+      <span>Jugador 2 / IA: <span id="score2">0</span></span>
+    </div>
+  </main>
+
+  <section class="botones">
+    <button id="btnJugar">▶ Jugar</button>
+    <button id="btnConfig">⚙ Configuración</button>
+ <button onclick="location.href='{{ url_for('menu') }}'">🏠 Menú</button>
+  </section>
+
+  <!-- ⚙ Modal de configuración -->
+  <div id="configModal" class="modal">
+    <div class="modal-content">
+      <h2>Configuración del juego</h2>
+
+      <label>
+        <input type="checkbox" id="aiEnabled" checked> Activar IA (Jugador 2)
+      </label>
+
+      <label for="aiDificultad">Dificultad de la IA:</label>
+      <input type="range" id="aiDificultad" min="0.03" max="0.2" step="0.01" value="0.08">
+      <span id="aiValor">0.08</span>
+
+      <label for="ballSpeed">Velocidad inicial de la pelota:</label>
+      <input type="range" id="ballSpeed" min="3" max="10" step="1" value="5">
+      <span id="speedValor">5</span>
+
+      <div class="modal-buttons">
+        <button id="btnGuardar">Guardar</button>
+        <button id="btnCerrar">Cancelar</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/pong.js') }}"></script>
+</body>
+</html>

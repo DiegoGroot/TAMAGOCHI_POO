@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>PvZ - Final Boss</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/diseno_final.css') }}">
+</head>
+<body>
+  <h1>Final Boss 🌱</h1>
+  <div id="toolbar">
+    <button class="plantBtn" data-type="shooter">Shooter 🌿 (50)</button>
+    <button class="plantBtn" data-type="sunflower">Sunflower 🌞 (25)</button>
+    <span id="sunCounter">Sun: 100</span>
+  </div>
+  <canvas id="gameCanvas" width="600" height="400"></canvas>
+  <p id="BossHealth">Boss health: 900</p>
+  <p id="scoreDisplay">Score: 0</p>
+  <button onclick="window.location.href='{{ url_for('menu') }}'">Volver al menú</button>
+
+  <script src="{{ url_for('static', filename='js/finalboss.js') }}"></script>
+</body>
+</html>
+
+

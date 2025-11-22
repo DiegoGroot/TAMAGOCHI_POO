@@ -1,0 +1,57 @@
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(to bottom, #a3d9a5, #64b678);
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 2rem;
+    margin: 20px 0;
+    color: #ffeb3b;
+    text-shadow: 2px 2px 4px #00000088;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    border: 4px solid #2e7d32;
+    border-radius: 12px;
+    background: linear-gradient(to top, #6ab04c, #a3d9a5);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+#scoreDisplay {
+    font-size: 1.3rem;
+    margin-top: 10px;
+    color: #1b5e20;
+}
+
+.controls {
+    margin-top: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    margin: 5px;
+    border-radius: 8px;
+    border: none;
+    background: #f39c12;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+button:hover {
+    background: #d35400;
+    transform: translateY(-2px);
+}
+
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}

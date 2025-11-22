@@ -1,0 +1,56 @@
+<!-- index.html -->
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Juego de Saltos</title>
+ <link rel="stylesheet" href="{{ url_for('static', filename='css/Diseno_jumper.css') }}">
+</head>
+<body>
+<div class="wrap">
+<div class="card">
+<header>
+<h1>Juego de Saltos — guarda tu récord</h1>
+<div class="controls">
+<button id="startBtn">Iniciar</button>
+<button id="pauseBtn">Pausar</button>
+<button id="muteBtn">🔊</button>
+</div>
+</header>
+
+
+<div class="game-area">
+<canvas id="game" width="640" height="360"></canvas>
+
+
+<div class="panel">
+<div class="stat">
+<div> Puntuación </div>
+<div class="score" id="score">0</div>
+<div class="small">Récord: <span id="best">0</span></div>
+</div>
+
+
+<div class="stat">
+<div class="hint">Controles:</div>
+<ul class="small">
+<li>Saltar: Barra espaciadora / click / tap</li>
+<li>Pausar: Botón "Pausar" o tecla P</li>
+<li>Reiniciar: después de morir dar click en "Iniciar"</li>
+</ul>
+</div>
+
+
+<div class="stat small">
+Juego simple en HTML/CSS/JS. Código separado en 3 archivos.
+</div>
+</div>
+</div>
+</div>
+</div>
+
+
+ <script type="module" src="{{ url_for('static', filename='js/jumper.js') }}"></script>
+</body>
+</html>

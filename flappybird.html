@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flappy Bird 🐦</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/Diseno_birds.css') }}">
+</head>
+<body>
+  <h1>Flappy Bird 🐦</h1>
+  <canvas id="gameCanvas" width="400" height="600"></canvas>
+  <p id="scoreDisplay">Score: 0</p>
+
+  <div class="controls">
+    <form action="{{ url_for('menu') }}" method="get" style="display:inline;">
+        <button type="submit">⬅ Menú Principal</button>
+    </form>
+
+    <button id="restartBtn">🔄 Reiniciar Juego</button>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/birds.js') }}"></script>
+  <script>
+    document.getElementById('restartBtn').addEventListener('click', () => {
+      window.location.reload();
+    });
+  </script>
+</body>
+</html>

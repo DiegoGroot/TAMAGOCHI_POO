@@ -1,0 +1,183 @@
+/* =======================================================
+   ESTILOS GENERALES DEL CONTENIDO
+   ======================================================= */
+.dashboard-container {
+    padding: 0 10px;
+    font-family: 'Poppins', sans-serif;
+    color: #333; /* Color de texto principal */
+}
+
+.dashboard-container h3 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+/* =======================================================
+   ESTILOS DEL HEADER Y PERFIL DE USUARIO
+   ======================================================= */
+.user-profile-header {
+    /* Aquí se coloca el "Panel de Métricas del Usuario" y los iconos de la derecha */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.main-title {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+}
+
+.user-info-section {
+    padding-top: 15px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+/* Información del usuario (nombre, fecha) */
+.profile-info {
+    display: flex;
+    align-items: center;
+}
+
+.profile-icon {
+    font-size: 32px;
+    background-color: #ffeded; /* Fondo rosado/naranja pálido */
+    color: #e65252; /* Color rojo del ícono */
+    border-radius: 50%;
+    padding: 8px 12px;
+    margin-right: 15px;
+    line-height: 1; /* Asegura el centrado vertical del ícono */
+    font-weight: bold;
+}
+
+.profile-info h2 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 3px 0;
+}
+
+.profile-info p {
+    font-size: 14px;
+    color: #888;
+    margin: 0;
+}
+
+/* Íconos de acción (campana, configuración) */
+.icon-actions {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.icon-actions .icon {
+    margin-left: 15px;
+    cursor: pointer;
+    color: #888;
+}
+
+.icon-actions .profile-badge {
+    /* El ícono de usuario con fondo activo (verde en la imagen) */
+    background-color: #4CAF50; 
+    color: white;
+    border-radius: 50%;
+    padding: 3px 5px;
+    font-size: 16px;
+    line-height: 1;
+}
+
+/* =======================================================
+   ESTILOS DE LAS TARJETAS (MÉTRICAS)
+   ======================================================= */
+.metrics-grid {
+    /* Crea una cuadrícula de 4 columnas */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 20px; /* Espacio entre tarjetas */
+    margin-top: 15px;
+}
+
+.metric-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s;
+    height: 100%; /* Asegura que todas las tarjetas tengan la misma altura */
+}
+
+.metric-card:hover {
+    /* Efecto sutil al pasar el ratón */
+    transform: translateY(-2px); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.card-title {
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+}
+
+.card-icon {
+    font-size: 18px;
+    color: #888;
+}
+
+/* Valor principal de la métrica (número o dato grande) */
+.card-value {
+    font-size: 30px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.card-value.large-text {
+    /* Estilo para los valores que son texto largo (ej. "Carrera Espacial") */
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.card-subtitle {
+    font-size: 12px;
+    color: #888;
+}
+
+/* =======================================================
+   RESPONSIVE (Ajustes para pantallas más pequeñas)
+   ======================================================= */
+@media (max-width: 1200px) {
+    .metrics-grid {
+        /* Reduce a 3 columnas en pantallas medianas */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 900px) {
+    .metrics-grid {
+        /* Reduce a 2 columnas en pantallas pequeñas */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .metrics-grid {
+        /* Pasa a 1 columna en móviles */
+        grid-template-columns: 1fr;
+    }
+    .user-profile-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title if title else "PetVirtua" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/diseno_usuario.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+    <div class="dashboard-container">
+
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <a href="/" class="logo">
+                    <img src="{{ url_for('static', filename='assets/logo.png') }}" alt="Logo">
+                    <span>PetVirtua</span>
+                </a>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/usuario" class="{% if request.url.path == '/usuario' %}active{% endif %}">
+                        <i class="fa-solid fa-paw"></i> Mascotas disponibles </a>
+                    </li>
+                    <li><a href="/juegos" class="{% if request.url.path == '/juegos' %}active{% endif %}">
+                        <i class="fa-solid fa-gamepad"></i> Juegos</a>
+                    </li>
+                    <li><a href="/estadisticas" class="{% if request.url.path == '/estadisticas' %}active{% endif %}">
+                        <i class="fa-solid fa-chart-line"></i> Estadísticas</a>
+                    </li>
+                    <li><a href="/perfil" class="{% if request.url.path == '/perfil' %}active{% endif %}">
+                        <i class="fa-solid fa-user"></i> Perfil de usuario</a> 
+                    </li>
+                    <li><a href="/configuracion" class="{% if request.url.path == '/configuracion' %}active{% endif %}">
+                        <i class="fa-solid fa-gear"></i> Configuración</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="/logout" class="btn-logout">
+                    <i class="fa-solid fa-right-from-bracket"></i> Cerrar Sesión
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+
+            <header class="main-header-dashboard">
+                <h1>{{ title }}</h1>
+
+                <div class="header-actions">
+                    <div class="dropdown">
+                        <i class="fa-solid fa-bell drop-btn"></i>
+                        <div class="dropdown-menu">
+                            <p class="dropdown-item">No hay nuevas notificaciones</p>
+                        </div>
+                    </div>
+
+                    <div class="dropdown">
+                        <a href="#" class="profile-pic drop-btn">
+                            <img src="{{ url_for('static', filename='assets/profile.png') }}" alt="Profile">
+                        </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="/perfil">Mi Perfil</a>
+                            <a class="dropdown-item" href="/cuenta">Mi Cuenta</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content-area">
+                {% block content %}{% endblock %}
+            </div>
+
+        </main>
+    </div>
+    <script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Estadísticas - PetVirtua</title>
+    <link rel="stylesheet" href="/static/css/Diseno_juegos.css">
+    <style>
+        /* Estilos específicos para la página de estadísticas */
+        .stats-header {
+            background-color: var(--color-sidebar-active); /* Un color que combine con el morado */
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            padding: 30px;
+        }
+        .stat-card {
+            background-color: var(--color-card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            color: var(--color-header-text);
+            text-align: center;
+        }
+        .stat-card h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+        }
+        .stat-card p {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 5px 0 0;
+        }
+        
+        /* 🛑 CÓDIGO PARA OCULTAR UNA MÉTRICA ESPECÍFICA 🛑 */
+        /* Si quisieras ocultar la métrica de 'Puntuación más alta' por ejemplo, usarías: */
+        .stat-card.ocultar-puntuacion {
+             display: none;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <div class="dashboard-layout">
+        
+        <aside class="sidebar">
+            <div class="logo">Logo PetVirtua</div>
+            <nav class="nav-links">
+                <a href="/usuario" class="nav-item">🐾 Mascotas disponibles</a> 
+                <a href="/juegos" class="nav-item">🕹️ Juegos</a>
+                <a href="/estadisticas" class="nav-item active">📊 Estadísticas</a> 
+                <a href="/perfil" class="nav-item">👤 Perfil de usuario</a>
+                <a href="/configuracion" class="nav-item">⚙️ Configuración de usuario</a>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <header class="arcade-header stats-header">
+                <div class="header-content">
+                    <h1>ESTADÍSTICAS</h1>
+                    <p class="subtitle">Tu progreso dentro de PetVirtua</p>
+                </div>
+            </header>
+            
+            <main class="stats-grid">
+                
+                <div class="stat-card">
+                    <h3>Tiempo Total Jugado</h3>
+                    <p>45h 32m</p>
+                </div>
+                
+                <div class="stat-card ocultar-puntuacion">
+                    <h3>Puntuación Más Alta</h3>
+                    <p>8,500 pts</p>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Veces Cuidada a Sparky</h3>
+                    <p>256</p>
+                </div>
+                
+                <div class="stat-card">
+                    <h3>Monedas Ganadas</h3>
+                    <p>💰 15,300</p>
+                </div>
+                
+            </main>
+
+            <footer>
+                <p>Estadísticas de PetVirtua</p>
+            </footer>
+
+        </div>
+    </div>
+
+</body>
+</html>

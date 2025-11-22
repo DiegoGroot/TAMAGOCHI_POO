@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetVirtua - Tu Mascota Virtual</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-logo">
+                <a href="#">PetVirtua</a>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#">Características</a></li>
+                <li><a href="#">Precios</a></li>
+                <li><a href="#">Contacto</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="#" class="btn btn-secondary" id="open-login-btn">Iniciar Sesión</a>
+                <a href="#" class="btn btn-primary" id="open-register-btn">Registrarse</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title text-gradient">Tu nueva mascota virtual te espera</h1>
+                <p class="hero-subtitle">
+                    Cuida, juega y conecta con una compañía digital única.
+                    Empieza tu aventura gratis hoy mismo.
+                </p>
+                <a href="#" class="btn btn-hero">Comenzar Ahora</a>
+                <div class="hero-image-placeholder placeholder-box">
+                     
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <div class="container">
+                <h2 class="section-title">Una experiencia de cuidado única</h2>
+                <p class="section-subtitle">
+                    Todo lo que necesitas para conectar con tu compañero digital.
+                </p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">[Icono de Corazón]</div>
+                        <h3>Cuida y Alimenta</h3>
+                        <p>Mantén a tu mascota feliz y saludable con comida, baños y cariño.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">[Icono de Mando]</div>
+                        <h3>Minijuegos Divertidos</h3>
+                        <p>Juega y gana monedas para desbloquear nuevos artículos.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">[Icono de Brocha]</div>
+                        <h3>Personalización Total</h3>
+                        <p>Decora su hogar, elige su ropa y cambia su apariencia.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works-section">
+            <div class="container how-it-works-content">
+                <div class="how-it-works-text">
+                    <h2 class="section-title-dark">Juega donde sea, cuando sea</h2>
+                    <p class="section-subtitle-dark">
+                        Sincroniza tu progreso en la web, móvil o tablet.
+                    </p>
+                    <a href="#" class="btn btn-secondary">Ver compatibilidad</a>
+                </div>
+                <div class="how-it-works-image placeholder-box">
+                    [Imagen de la app en un teléfono y una tablet]
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="container">
+                <h2 class="section-title">Empieza tu aventura hoy</h2>
+                <p class="section-subtitle">
+                    Regístrate gratis y recibe un objeto exclusivo de bienvenida.
+                </p>
+                <a href="#" class="btn btn-cta">Crear mi Mascota Gratis</a>
+            </div>
+        </section>
+    
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <a href="#">PetVirtua</a>
+            </div>
+            <ul class="footer-links">
+                <li><a href="#">Sobre Nosotros</a></li>
+                <li><a href="#">Privacidad</a></li>
+                <li><a href="#">Términos</a></li>
+            </ul>
+            <p class="footer-copyright">
+                © 2025 PetVirtua. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal-box">
+        </div>
+    </div>
+
+    <div class="loading-overlay" id="loading-overlay">
+        <div id="loading-pet-sprite">🐾</div> <p id="loading-text">Cargando tu mascota...</p>
+        <div class="loading-progress-container">
+            <div class="loading-progress-bar" id="loading-progress-bar"></div> 
+        </div>
+    </div>
+
+    <script type="module" src="{{ url_for('static', filename='js/inicio_script.js') }}"></script>
+</body>
+</html>

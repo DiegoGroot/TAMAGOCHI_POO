@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serpiente Perruna</title>
+     <link rel="stylesheet" href="{{ url_for('static', filename='css/Diseno_snake.css') }}">
+</head>
+<body>
+    <div class="main-content-wrapper">
+        <h1>Serpiente Perruna</h1>
+        <h2>Tu perro come como en Snake</h2>
+
+        <div class="game-layout">
+            
+            <div class="game-column">
+                <canvas id="snakeCanvas" width="400" height="400" aria-label="Canvas del juego Snake"></canvas>
+            </div>
+
+            <div class="sidebar-column">
+                
+                <div class="info">
+                    <p>Máxima puntuación: <span id="highScore">0</span></p>
+                    <hr class="score-separator" />
+                    <p>Puntuación: <span id="score">0</span></p>
+                    <button id="endGameBtn" class="end-game-button">💀 Fin de Juego</button>
+                </div>
+
+                <div class="controls">
+                    <button id="startBtn">▶ Jugar</button>
+                    <button id="restartBtn">🔄 Reiniciar</button>
+                    <button id="configBtn">⚙️ Configuración</button>
+                    <button id="menuBtn">🏠 Menú</button> 
+                </div>
+            </div>
+        </div>
+        
+        <div class="game-footer">
+            
+            <div class="control-table-container">
+                <h3>⌨️ Controles</h3>
+                <table class="info-table">
+                    <thead><tr><th>Dirección</th><th>Tecla</th></tr></thead>
+                    <tbody>
+                        <tr><td>⬆️ Arriba</td><td>Flecha Arriba/W</td></tr>
+                        <tr><td>⬇️ Abajo</td><td>Flecha Abajo/S</td></tr>
+                        <tr><td>⬅️ Izquierda</td><td>Flecha Izquierda/A</td></tr>
+                        <tr><td>➡️ Derecha</td><td>Flecha Derecha/D</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="highscore-table-container">
+                <h3>🏆 Mejores Puntuaciones</h3>
+                <table id="highScoreTable" class="info-table">
+                    <thead><tr><th>#</th><th>Nombre</th><th>Pts</th></tr></thead>
+                    <tbody>
+                        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="recordModal" class="modal" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <button id="closeRecordModal" class="close" aria-label="Cerrar">✕</button>
+            <h2>¡Nuevo Récord! 🎉</h2>
+            <p>Tu puntuación de <span id="finalScore">0</span> es una de las mejores.</p>
+            <label for="playerName">Introduce tu nombre (3 letras):</label>
+            <input type="text" id="playerName" maxlength="3" class="text-input" style="text-transform: uppercase;" />
+            <button id="saveRecordBtn" style="margin-top: 10px;">Guardar Récord</button>
+        </div>
+    </div>
+
+    <div id="configModal" class="modal" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <button id="closeModal" class="close" aria-label="Cerrar">✕</button>
+            <h2>⚙️ Configuración</h2>
+
+            <div class="cfg-row"><label>Color de fondo</label><input type="color" id="bgColor" value="#000000" /></div>
+            
+            <div class="cfg-row"><label>Color de Cabeza</label><input type="color" id="snakeHeadColor" value="#E53E3E" /></div>
+            <div class="cfg-row"><label>Color de Cuerpo</label><input type="color" id="snakeBodyColor" value="#48BB78" /></div>
+            <div class="cfg-row"><label>Color de Comida</label><input type="color" id="foodColor" value="#f6e05e" /></div>
+            
+            <div class="cfg-row">
+                <label>Velocidad</label>
+                <select id="snakeSpeed">
+                    <option value="150">Lento</option>
+                    <option value="100">Normal</option>
+                    <option value="70">Rápido</option>
+                    <option value="40">Extremo</option>
+                </select>
+            </div>
+            
+            <div class="cfg-row">
+                <label>Tamaño de Cuadrícula (Celdas)</label>
+                <select id="gridSize">
+                    <option value="20">Normal (20x20)</option>
+                    <option value="15">Grande (15x15)</option>
+                    <option value="25">Pequeña (25x25)</option>
+                </select>
+            </div>
+            
+            <div class="cfg-row">
+                <label>Modo de Borde</label>
+                <select id="wrapMode">
+                    <option value="false">Muro (Fin de Juego)</option>
+                    <option value="true">Teletransporte (Wrap)</option>
+                </select>
+            </div>
+
+            <div class="cfg-row" style="margin-top:10px;">
+                <button id="saveConfig">Guardar y Aplicar</button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="messageModal" class="modal">
+        <div class="modal-content">
+            <button id="messageModalClose" class="close" aria-label="Cerrar">✕</button>
+            <h2 id="messageModalTitle"></h2>
+            <p id="messageModalText"></p>
+            <button id="messageModalOK" class="controls end-game-button">ACEPTAR</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/snake.jsx"></script>
+</body>
+</html>

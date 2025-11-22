@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blocks</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Diseno_blocks.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1 id="titulo">Blocks</h1>
+        <p id="subtitulo">Atrapa los bloques con la barra</p>
+    </div>
+
+    <canvas id="blocksCanvas" width="640" height="400"></canvas>
+
+    <div id="hud">
+        Score: <span id="score">0</span> | Vidas: <span id="extra">3</span>
+    </div>
+
+    <div id="controls">
+        Controles: ← → o Ratón para mover | Space = Pausa
+    </div>
+
+    <button id="btnJugar">▶ Jugar</button>
+    <button id="btnConfig">⚙ Configuración</button>
+    <button id="btnVolverMenu">⬅ Volver al menú</button>
+
+    <div id="configModal" class="modal">
+        <div class="modal-content">
+            <h2>⚙ Configuración del Juego</h2>
+            
+            <label for="fondoCanvas">Color de Fondo del Área de Juego:</label>
+            <input type="color" id="fondoCanvas" value="#071029"> 
+            
+            <label for="dropSpeed">Velocidad Mínima de las Gotas (1 - 5):</label>
+            <input type="number" id="dropSpeed" min="1" max="5" value="2">
+            
+            <label for="paddleWidth">Ancho de la Barra (50 - 150 px):</label>
+            <input type="range" id="paddleWidth" min="50" max="150" value="80">
+            <span id="paddleWidthValue">80 px</span>
+
+            <button id="btnGuardarConfig">Guardar y Cerrar</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/blocks.js') }}"></script>
+    <script>
+        document.getElementById('paddleWidth').addEventListener('input', (e) => {
+            document.getElementById('paddleWidthValue').textContent = `${e.target.value} px`;
+        });
+
+        document.getElementById('btnVolverMenu').addEventListener('click', () => {
+            Blocks.stop();
+            Blocks.saveScore();
+            window.location.href = "/juegos"; // ✅ Usa FastAPI, no Flask
+        });
+
+        document.getElementById('btnJugar').addEventListener('click', () => {
+            Blocks.start();
+        });
+
+        document.getElementById('btnConfig').addEventListener('click', () => {
+            document.getElementById('fondoCanvas').value = Blocks.getConfig('canvasBgColor');
+            document.getElementById('dropSpeed').value = Blocks.getConfig('minDropSpeed');
+            document.getElementById('paddleWidth').value = Blocks.getConfig('paddleWidth');
+            document.getElementById('paddleWidthValue').textContent = `${Blocks.getConfig('paddleWidth')} px`;
+            document.getElementById('configModal').style.display = 'block';
+            Blocks.pause(true);
+        });
+
+        document.getElementById('btnGuardarConfig').addEventListener('click', () => {
+            const newConfig = {
+                canvasBgColor: document.getElementById('fondoCanvas').value,
+                minDropSpeed: parseInt(document.getElementById('dropSpeed').value, 10),
+                paddleWidth: parseInt(document.getElementById('paddleWidth').value, 10)
+            };
+            Blocks.setConfig(newConfig);
+            document.getElementById('configModal').style.display = 'none';
+            Blocks.pause(false);
+        });
+    </script>
+</body>
+</html>

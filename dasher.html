@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>dasher </title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/diseno_dasher.css') }}">
+</head>
+<body>
+  <h1>dasher</h1>
+  <canvas id="gameCanvas" width="400" height="600"></canvas>
+  <p id="scoreDisplay">Score: 0</p>
+
+  <div class="controls">
+    <button id="btnJugar">▶ Jugar</button>
+    <button id="btnConfig">⚙ Configuración</button>
+    <button id="btnVolverMenu">⬅ Volver al menú</button>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/dasher.js') }}"></script>
+  <script>
+    let jumperLoop;
+
+    document.getElementById('btnJugar').addEventListener('click', () => {
+      if (typeof startGame === 'function') startGame();
+    });
+
+    document.getElementById('btnVolverMenu').addEventListener('click', () => {
+      if (jumperLoop) cancelAnimationFrame(jumperLoop);
+      window.location.href = "{{ url_for('menu') }}";
+    });
+
+    document.getElementById('btnConfig').addEventListener('click', () => {
+      alert('Configuración aún no implementada');
+    });
+  </script>
+</body>
+</html>

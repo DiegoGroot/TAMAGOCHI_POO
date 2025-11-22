@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memoria</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Diseno_memory.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1 id="titulo">Juego de Memoria</h1>
+        <p id="subtitulo">Encuentra todas las parejas</p>
+    </div>
+
+    <div id="controls">
+        <label>Dificultad:</label>
+        <button id="btnEasy" class="active">Fácil (3x4)</button>
+        <button id="btnMedium">Medio (4x4)</button>
+        <button id="btnHard">Difícil (4x5)</button>
+    </div>
+
+    <div id="memoryArea" class="grid"></div>
+
+    <div id="stats">
+        <div id="hud">
+            Pares encontrados: <span id="score">0</span>
+        </div>
+        <div id="last-score">
+            Último juego completado: <span id="lastScore">--</span>
+        </div>
+    </div>
+
+    <div style="text-align:center; margin:20px;">
+        <button id="btnVolverMenu">⬅ Volver al menú</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/memory.js') }}"></script>
+    <script>
+        // Función para cambiar el tamaño del tablero y reiniciar
+        function setDifficulty(rows, cols) {
+            MemoryGame.setConfig(rows, cols);
+            MemoryGame.start();
+
+            // Resaltar el botón activo
+            document.querySelectorAll('#controls button').forEach(btn => btn.classList.remove('active'));
+            document.getElementById(`btn${rows === 3 ? 'Easy' : rows === 4 && cols === 4 ? 'Medium' : 'Hard'}`).classList.add('active');
+        }
+
+        // Asignar eventos de dificultad
+        document.getElementById('btnEasy').addEventListener('click', () => setDifficulty(3, 4));
+        document.getElementById('btnMedium').addEventListener('click', () => setDifficulty(4, 4));
+        document.getElementById('btnHard').addEventListener('click', () => setDifficulty(4, 5));
+
+        // Manejo del botón de menú (usando Flask)
+        document.getElementById('btnVolverMenu').addEventListener('click', () => {
+            MemoryGame.stop();
+            // Guardar puntaje aquí si deseas registrar el último par encontrado antes de salir
+            // MemoryGame.saveScore(); 
+            window.location.href = "{{ url_for('menu') }}";
+        });
+
+        // Iniciar el juego por defecto
+        MemoryGame.start();
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+body {
+    font-family: "Courier New", monospace;
+    background: #1b1f3b;
+    color: #f0f0f0;
+    text-align: center;
+    margin: 0; padding: 0;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 20px 0;
+    color: #ffdd57;
+    text-shadow: 2px 2px 6px #00000088;
+}
+
+canvas {
+    display: block;
+    margin: 0 auto;
+    background: #0f1a40;
+    border: 5px dashed #ffdd57;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+#scoreDisplay {
+    font-size: 1.5rem;
+    margin-top: 15px;
+    color: #ff7f50;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+    margin: 8px;
+    border-radius: 12px;
+    border: 2px solid #ff7f50;
+    background: #2b2f6a;
+    color: #ffdd57;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #ff7f50;
+    color: #1b1f3b;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+}

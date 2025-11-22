@@ -1,120 +1,240 @@
+/* 1. DEFINICIÓN DE VARIABLES POR DEFECTO (TEMA MARRÓN) */
+:root {
+    --color-body-bg: #f3d5b5;     
+    --color-body-text: #4b2e05;   
+
+    --color-header-bg: #6b3e1e;   
+    --color-header-text: #fff;    
+    
+    --color-card-bg: #b8874f;     
+    --color-footer-text: #7a4c2a; 
+
+    /* Colores para la sidebar (PetVirtua) */
+    --color-sidebar-bg: #4B0082; 
+    --color-sidebar-active: #6A1B9A; 
+}
+
+/* 2. DEFINICIÓN DEL TEMA ALTERNATIVO (TEMA MORADO - PetVirtua) */
+.theme-purple {
+    --color-body-bg: #EAE6FF;     
+    --color-body-text: #2C004F;   
+
+    --color-header-bg: #4B0082;   
+    --color-header-text: #fff;
+
+    --color-card-bg: #6A1B9A;     
+    --color-footer-text: #4B0082; 
+    
+    --color-sidebar-bg: #4B0082; 
+    --color-sidebar-active: #6A1B9A;
+}
+
+/* 3. ESTILOS BASE (USANDO VARIABLES) */
 body {
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(to bottom, #f4e4b2, #e2b26e);
-  color: #2b1d0e;
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    background: var(--color-body-bg);
+    color: var(--color-body-text);
 }
 
-.header {
-  text-align: center;
-  background: #7b4b1f;
-  color: white;
-  padding: 15px;
-  font-size: 1.5rem;
-  border-bottom: 4px solid #4d2d0f;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+/* --- ESTRUCTURA PRINCIPAL (Dashboard Layout) --- */
+.dashboard-layout {
+    display: flex;
+    min-height: 100vh;
+    overflow-y: hidden; 
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-  gap: 16px;
-  padding: 20px;
+/* --- BARRA LATERAL (Sidebar) --- */
+.sidebar {
+    width: 250px; 
+    background-color: var(--color-sidebar-bg);
+    color: var(--color-header-text);
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0; 
+    display: flex; 
+    flex-direction: column;
 }
 
-/* Tarjetas */
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 20px 30px;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.nav-item {
+    text-decoration: none;
+    color: var(--color-header-text);
+    /* Mantener alineación similar a la referencia */
+    padding: 15px 20px 15px 40px; 
+    font-size: 1.1rem;
+    display: flex; 
+    gap: 10px;
+    align-items: center; 
+}
+
+.nav-item:hover, .nav-item.active {
+    background-color: var(--color-sidebar-active);
+    border-right: 5px solid var(--color-body-bg); 
+    font-weight: bold; 
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.main-content {
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- HEADER DE ARCADE --- */
+.arcade-header {
+    background: var(--color-header-bg);
+    color: var(--color-header-text);
+    padding: 40px 20px;
+    text-align: center;
+    position: relative; 
+    flex-shrink: 0; 
+    border-bottom: 2px solid rgba(0,0,0,0.1); 
+}
+
+.arcade-header h1 {
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    margin: 0 0 5px 0;
+}
+
+.arcade-header .subtitle {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+/* 🟢 CUADRÍCULA CRÍTICA: Ajuste para parecerse a Plants vs. Zombies */
+.game-grid-container {
+    flex-grow: 1; 
+    padding: 20px; 
+    display: grid;
+    /* Fuerza tantas columnas como sea posible, con un mínimo de 130px de ancho */
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); 
+    gap: 15px; 
+    justify-items: center; 
+    align-items: start;
+    overflow-y: auto; 
+    max-width: 100%; /* Permite ocupar todo el espacio disponible */
+    margin: 0 auto; 
+}
+
+/* Tarjetas (Diseño Compacto) */
 .card {
-  background: #f8e6c2;
-  border: 3px solid #7b4b1f;
-  border-radius: 8px;
-  overflow: hidden;
-  cursor: pointer;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-  transition: transform 0.2s, box-shadow 0.2s;
-  position: relative;
+    background: var(--color-card-bg);
+    border-radius: 8px; 
+    overflow: hidden;
+    width: 130px; /* Tamaño fijo para una cuadrícula uniforme */
+    height: 180px; 
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    color: var(--color-header-text); 
+    display: flex; 
+    flex-direction: column;
+    border: 2px solid rgba(0,0,0,0.2); 
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 12px rgba(0,0,0,0.3);
-}
-
-.thumb {
-  height: 120px;
-  overflow: hidden;
+.card:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
 }
 
 .thumb img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(0,0,0,0.1); 
 }
 
 .info {
-  text-align: center;
-  padding: 10px;
-  background: linear-gradient(to top, #c49356, #e0b878);
-  color: #2b1d0e;
-  font-weight: bold;
-  font-size: 0.95rem;
+    padding: 8px; 
+    flex-grow: 1; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    font-size: 0.9rem; 
 }
 
-footer {
-  text-align: center;
-  background: #7b4b1f;
-  color: white;
-  padding: 10px;
-  font-size: 1rem;
-  border-top: 4px solid #4d2d0f;
+.info h3 {
+    margin: 0;
+    font-size: 1em; 
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
-/* 🔒 Bloqueados */
-.card.locked {
-  opacity: 0.6;
-  cursor: not-allowed;
+.bloqueado {
+    filter: grayscale(80%);
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
-.lock-icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 3rem;
-  color: rgba(0,0,0,0.7);
-  pointer-events: none;
+/* Loading y errores */
+.loading, .error {
+    text-align: center;
+    padding: 40px;
+    font-size: 1.2rem;
+    color: var(--color-body-text);
 }
 
-/* 🎵 Música */
-#music-control {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: rgba(15, 23, 42, 0.8);
-  border: 2px solid #5bc0be;
-  border-radius: 50%;
-  width: 55px;
-  height: 55px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 10px rgba(91, 192, 190, 0.6);
-  transition: all 0.3s ease;
+#error {
+    color: red;
 }
 
-#music-control:hover {
-  transform: scale(1.1);
+/* --- FOOTER (Contenedor de Botones) --- */
+.arcade-footer {
+    position: relative; 
+    padding: 20px;
+    /* Usamos el color del header para que contraste con el fondo de los juegos */
+    background-color: var(--color-header-bg); 
+    flex-shrink: 0; 
+    min-height: 80px; 
+    display: flex;
+    justify-content: space-between; /* Clave para separar los botones */
+    align-items: center; 
+    border-top: 2px solid rgba(0,0,0,0.1); 
 }
 
-#music-btn {
-  background: none;
-  border: none;
-  color: #5bc0be;
-  font-size: 24px;
-  cursor: pointer;
-  outline: none;
+/* --- BOTONES INFERIORES (Música y Tema) --- */
+#music-btn, #theme-toggle-btn {
+    /* Usamos el color del texto del header, que es blanco */
+    color: var(--color-header-text); 
+    border: 2px solid var(--color-header-text); 
+    
+    /* El resto de estilos para hacerlos circulares */
+    width: 50px; 
+    height: 50px;
+    border-radius: 50%;
+    background-color: transparent; 
+    font-size: 1.8rem; 
+    cursor: pointer;
+    line-height: 1; 
+    transition: background-color 0.2s, transform 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; 
+    
+    /* Hacemos que se posicionen de manera normal en el footer flex, 
+       pero separemos los elementos para que queden en las esquinas */
+    position: static; 
 }
 
-#music-btn:hover {
-  color: #3aafa9;
+#music-btn:hover, #theme-toggle-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.05);
 }

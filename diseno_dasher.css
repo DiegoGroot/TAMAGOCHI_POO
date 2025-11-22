@@ -1,0 +1,58 @@
+body {
+      font-family: 'Press Start 2P', cursive, sans-serif;
+      background: radial-gradient(circle at 50% 20%, #ff9a9e, #fad0c4);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-top: 15px;
+      text-shadow: 2px 2px #f72585;
+    }
+
+    canvas {
+      display: block;
+      margin: 20px auto;
+      background: linear-gradient(to bottom, #4facfe, #00f2fe);
+      border: 3px solid #f72585;
+      border-radius: 16px;
+      box-shadow: 0 0 20px rgba(247,37,133,0.6);
+    }
+
+    #scoreDisplay {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #1f1f1f;
+      text-shadow: 1px 1px #ff9a9e;
+      margin-top: 10px;
+    }
+
+    .controls {
+      margin: 20px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 0.9rem;
+      margin: 6px;
+      border-radius: 12px;
+      border: 2px solid #ff9a9e;
+      background: linear-gradient(45deg, #f72585, #7209b7);
+      color: #fff;
+      cursor: pointer;
+      font-weight: bold;
+      text-shadow: 1px 1px #000;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #7209b7, #3a0ca3);
+      box-shadow: 0 0 12px #ff9a9e;
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
